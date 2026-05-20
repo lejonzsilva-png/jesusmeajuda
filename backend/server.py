@@ -2,13 +2,10 @@ import sys
 import os
 from pathlib import Path
 
-# --- CORREÇÃO DE CAMINHO ---
-# Garante que a pasta 'backend' está no topo da lista de busca do Python
-backend_dir = os.path.abspath(os.path.dirname(__file__))
-if backend_dir not in sys.path:
-    sys.path.insert(0, backend_dir)
+# Adiciona o diretório 'backend' ao início do sys.path
+# Isso garante que o Python procure 'routers' dentro da pasta 'backend'
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-# Agora os imports funcionam porque o Python sabe que os módulos estão aqui
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
@@ -16,8 +13,7 @@ from routers import api_router
 
 app = FastAPI()
 
-# Definição do diretório raiz
-# Se o server.py está em 'backend/', a raiz é o diretório pai
+# Definição de caminhos
 ROOT_DIR = Path(__file__).resolve().parent.parent
 frontend_build_path = os.path.join(ROOT_DIR, "frontend", "build")
 
@@ -29,7 +25,7 @@ static_dir = os.path.join(frontend_build_path, "static")
 if os.path.exists(static_dir):
     app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
-# 3. Rota PWA para servir o index.html
+# 3. Rota PWA
 @app.get("/{full_path:path}")
 async def serve_frontend(full_path: str):
     if full_path.startswith("api"):
