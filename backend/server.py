@@ -2,32 +2,34 @@ import sys
 import os
 from pathlib import Path
 
-# Adiciona o diretório 'backend' ao caminho do sistema para que os imports funcionem
-# __file__ é o caminho deste arquivo (backend/server.py)
-# os.path.dirname(__file__) é o caminho da pasta 'backend'
-backend_dir = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, backend_dir)
+# --- CORREÇÃO DE CAMINHO ---
+# Garante que a pasta 'backend' está no topo da lista de busca do Python
+backend_dir = os.path.abspath(os.path.dirname(__file__))
+if backend_dir not in sys.path:
+    sys.path.insert(0, backend_dir)
 
+# Agora os imports funcionam porque o Python sabe que os módulos estão aqui
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
-from routers import api_router # Agora deve funcionar!
+from routers import api_router
 
 app = FastAPI()
 
 # Definição do diretório raiz
-BASE_DIR = Path(__file__).resolve().parent.parent
-frontend_build_path = os.path.join(BASE_DIR, "frontend", "build")
+# Se o server.py está em 'backend/', a raiz é o diretório pai
+ROOT_DIR = Path(__file__).resolve().parent.parent
+frontend_build_path = os.path.join(ROOT_DIR, "frontend", "build")
 
-# 1. Inclua as rotas
+# 1. Incluir rotas
 app.include_router(api_router)
 
-# 2. Servir arquivos estáticos
+# 2. Servir arquivos estáticos do React
 static_dir = os.path.join(frontend_build_path, "static")
 if os.path.exists(static_dir):
     app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
-# 3. Rota PWA
+# 3. Rota PWA para servir o index.html
 @app.get("/{full_path:path}")
 async def serve_frontend(full_path: str):
     if full_path.startswith("api"):
