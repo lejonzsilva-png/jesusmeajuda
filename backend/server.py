@@ -2,14 +2,14 @@ import sys
 import os
 from pathlib import Path
 
-# Adiciona o diretório 'backend' ao início da lista de busca do Python
-# Isso garante que o 'import routers' funcione corretamente
+# Adiciona a pasta 'backend' ao início da lista de busca do Python
+# Isto resolve o erro 'ModuleNotFoundError'
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
-from routers import api_router  # Agora o Python encontrará o routers.py
+from routers import api_router  # Agora será encontrado corretamente
 
 app = FastAPI()
 
