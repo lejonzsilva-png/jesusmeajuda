@@ -1,4 +1,11 @@
+import sys
 import os
+
+# Adiciona o diretório atual ao caminho de busca do Python
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+# Agora pode fazer o import normalmente
+from routers import api_router
 from pathlib import Path
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
