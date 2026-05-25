@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import axios from "axios";
 import { DEFAULT_TIME_SIGNATURE, defaultAccents } from "@/types";
 
 const STORAGE_KEY = "louvorapp:config";
@@ -74,20 +75,23 @@ export function useLouvorApp() {
     setLoading(true);
     setError(null);
     try {
-      const url = `${config.url}/api/external/scales?upcoming=${upcomingOnly}&limit=50`;
-      const res = await fetch(url, {
+      const url = `${config.url}/api/external/scales`;
+      const res = await axios.get(url, {
+        params: { upcoming: upcomingOnly, limit: 50 },
         headers: { "X-API-Key": config.apiKey },
       });
-      if (!res.ok) {
-        if (res.status === 401) throw new Error("API Key inválida. Verifique as credenciais.");
-        if (res.status === 404) throw new Error("URL não encontrado. Verifique o endereço do servidor.");
-        throw new Error(`Erro do servidor: ${res.status}`);
-      }
-      const data = await res.json();
-      setScales(data);
+      setScales(res.data);
       setLastFetch(new Date());
     } catch (e) {
-      if (e.name === "TypeError") {
+      if (e.response) {
+        if (e.response.status === 401) {
+          setError("API Key inválida. Verifique as credenciais.");
+        } else if (e.response.status === 404) {
+          setError("URL não encontrado. Verifique o endereço do servidor.");
+        } else {
+          setError(`Erro do servidor: ${e.response.status}`);
+        }
+      } else if (e.request) {
         setError("Não foi possível ligar ao servidor. Verifique o URL e se o servidor está online.");
       } else {
         setError(e.message || "Erro desconhecido.");
