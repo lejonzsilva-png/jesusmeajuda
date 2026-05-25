@@ -320,12 +320,12 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex-1 flex flex-col items-center justify-start p-4 sm:p-6 gap-5 overflow-y-auto">
+        <div className="flex-1 flex flex-col items-center justify-start p-3 sm:p-6 gap-3 sm:gap-5 overflow-y-auto">
           <div className="text-center w-full px-2 overflow-hidden animate-fade-in-up">
             {playingSong ? (
               <>
                 <p
-                  className="text-6xl sm:text-8xl font-display font-bold text-foreground leading-tight truncate"
+                  className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-foreground leading-tight truncate px-4"
                   style={{
                     textShadow:
                       "0 0 18px hsl(var(--primary) / 0.55), 0 0 6px hsl(var(--primary) / 0.35)",
@@ -335,25 +335,25 @@ export default function Home() {
                   {playingSong.title}
                 </p>
                 {playingSong.key && (
-                  <p className="text-5xl sm:text-7xl font-display font-bold text-primary mt-1" data-testid="text-playing-key">
-                    <span className="text-2xl sm:text-4xl text-muted-foreground font-semibold mr-2">TOM:</span>
+                  <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-primary mt-1" data-testid="text-playing-key">
+                    <span className="text-sm sm:text-lg md:text-xl text-muted-foreground font-semibold mr-1.5">TOM:</span>
                     {playingSong.key}
                   </p>
                 )}
                 {playingSong.notes && (
-                  <p className="text-xs sm:text-sm text-muted-foreground/80 mt-2 italic max-w-md mx-auto">
+                  <p className="text-[10px] sm:text-xs text-muted-foreground/80 mt-1 sm:mt-2 italic max-w-md mx-auto truncate">
                     {playingSong.notes}
                   </p>
                 )}
               </>
             ) : (
-              <p className="text-xl sm:text-2xl font-display font-semibold text-muted-foreground italic tracking-[0.25em] uppercase">
+              <p className="text-base sm:text-xl font-display font-semibold text-muted-foreground italic tracking-[0.25em] uppercase">
                 {browsingSong ? `▶ ${browsingSong.title}` : "Free Play"}
               </p>
             )}
           </div>
 
-          <div className="w-full max-w-3xl bg-card/80 backdrop-blur-sm border border-border rounded-2xl p-6 sm:p-8 shadow-2xl shadow-black/30">
+          <div className="w-full max-w-3xl bg-card/80 backdrop-blur-sm border border-border rounded-2xl p-4 sm:p-8 shadow-2xl shadow-black/30">
             <Metronome
               playingSong={effectiveSong}
               isPlaying={isPlaying}
