@@ -295,7 +295,11 @@ export default function Home() {
 
       <main className="flex-1 grid grid-cols-[340px_1fr] sm:grid-cols-[380px_1fr] lg:grid-cols-[420px_1fr] overflow-hidden min-h-0">
         <div className="border-r border-border p-3 sm:p-4 flex flex-col overflow-hidden min-h-0 gap-3">
-          {/* SetlistPanel scrolls internally — must be flex-1 min-h-0 */}
+          {/* LouvorApp — topo da sidebar, sempre visível */}
+          <div className="shrink-0">
+            <LouvorAppPanel onLoadSetlist={loadSongs} />
+          </div>
+          {/* SetlistPanel ocupa o espaço restante */}
           <div className="flex-1 min-h-0 overflow-hidden">
             <SetlistPanel
               songs={songs}
@@ -311,10 +315,6 @@ export default function Home() {
               onExport={exportSetlist}
               onImport={importSetlist}
             />
-          </div>
-          {/* LouvorApp — sempre visível no fundo da sidebar */}
-          <div className="shrink-0">
-            <LouvorAppPanel onLoadSetlist={loadSongs} />
           </div>
         </div>
 
