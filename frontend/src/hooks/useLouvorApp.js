@@ -48,7 +48,8 @@ export function useLouvorApp() {
   const isConfigured = Boolean(config.url && config.apiKey);
 
   const updateConfig = useCallback((url, apiKey) => {
-    const trimmedUrl = url.trim().replace(/\/$/, ""); // remove trailing slash
+    let trimmedUrl = url.trim().replace(/\/$/, ""); // remove trailing slash
+    trimmedUrl = trimmedUrl.replace(/\/api$/, "");  // remove trailing /api if present
     const next = { url: trimmedUrl, apiKey: apiKey.trim() };
     setConfig(next);
     saveConfig(next);
