@@ -294,23 +294,26 @@ export default function Home() {
       </header>
 
       <main className="flex-1 grid grid-cols-[340px_1fr] sm:grid-cols-[380px_1fr] lg:grid-cols-[420px_1fr] overflow-hidden min-h-0">
-        <div className="border-r border-border p-3 sm:p-4 flex flex-col overflow-hidden min-h-0 gap-4">
-          <SetlistPanel
-            songs={songs}
-            browsingId={browsingId}
-            playingId={playingId}
-            isPlaying={isPlaying}
-            onSelect={setBrowsingId}
-            onAdd={handleAddSong}
-            onUpdate={updateSong}
-            onRemove={handleRemoveSong}
-            onReorder={reorderSongs}
-            onClear={clearSetlist}
-            onExport={exportSetlist}
-            onImport={importSetlist}
-          />
-          {/* LouvorApp integration — import scales as setlist */}
-          <div className="shrink-0 border-t border-border pt-3">
+        <div className="border-r border-border p-3 sm:p-4 flex flex-col overflow-hidden min-h-0 gap-3">
+          {/* SetlistPanel scrolls internally — must be flex-1 min-h-0 */}
+          <div className="flex-1 min-h-0 overflow-hidden">
+            <SetlistPanel
+              songs={songs}
+              browsingId={browsingId}
+              playingId={playingId}
+              isPlaying={isPlaying}
+              onSelect={setBrowsingId}
+              onAdd={handleAddSong}
+              onUpdate={updateSong}
+              onRemove={handleRemoveSong}
+              onReorder={reorderSongs}
+              onClear={clearSetlist}
+              onExport={exportSetlist}
+              onImport={importSetlist}
+            />
+          </div>
+          {/* LouvorApp — sempre visível no fundo da sidebar */}
+          <div className="shrink-0">
             <LouvorAppPanel onLoadSetlist={loadSongs} />
           </div>
         </div>
