@@ -152,7 +152,12 @@ export function SetlistPanel({
               <Trash2 className="w-4 h-4" />
             </Button>
           )}
-          <Button size="sm" onClick={() => setShowAdd(true)} data-testid="button-add-song">
+          <Button
+            size="sm"
+            onClick={() => setShowAdd(true)}
+            data-testid="button-add-song"
+            className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold"
+          >
             <Plus className="w-4 h-4 mr-1" />
             Adicionar
           </Button>
