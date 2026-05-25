@@ -79,6 +79,7 @@ export function useLouvorApp() {
       const res = await axios.get(url, {
         params: { upcoming: upcomingOnly, limit: 50 },
         headers: { "X-API-Key": config.apiKey },
+        adapter: "xhr", // Força o uso de XMLHttpRequest para contornar monkey-patches de fetch no visual editor
       });
       setScales(res.data);
       setLastFetch(new Date());
