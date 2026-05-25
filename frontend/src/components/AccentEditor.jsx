@@ -29,7 +29,7 @@ export function AccentEditor({ accents, onChange, currentBeat, isPlaying }) {
           const base = "relative flex flex-col items-center justify-center w-12 h-14 rounded-lg border-2 transition-all select-none text-xs font-bold";
           let style;
           if (value === 2) {
-            style = "border-primary bg-primary/20 text-primary";
+            style = "border-accent bg-accent/20 text-accent";
           } else if (value === 1) {
             style = "border-border bg-muted/40 text-foreground/80";
           } else {

@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    /* Mustard yellow dark theme */
-    --background: 220 20% 10%;
-    --foreground: 220 15% 92%;
-    --border: 220 15% 22%;
-    --card: 220 18% 14%;
-    --card-foreground: 220 15% 92%;
-    --popover: 220 18% 14%;
-    --popover-foreground: 220 15% 92%;
-    --primary: 42 90% 52%;
-    --primary-foreground: 220 20% 8%;
-    --secondary: 220 15% 22%;
-    --secondary-foreground: 220 15% 92%;
-    --muted: 220 15% 18%;
-    --muted-foreground: 220 12% 65%;
-    --accent: 42 60% 22%;
-    --accent-foreground: 42 90% 80%;
-    --destructive: 0 72% 51%;
+    /* Premium Navy and Gold theme (AppManagerLOUVOR style) */
+    --background: 219 40% 6%;
+    --foreground: 220 15% 94%;
+    --border: 219 30% 16%;
+    --card: 219 35% 10%;
+    --card-foreground: 220 15% 94%;
+    --popover: 219 35% 10%;
+    --popover-foreground: 220 15% 94%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 219 40% 6%;
+    --secondary: 219 30% 16%;
+    --secondary-foreground: 220 15% 94%;
+    --muted: 219 25% 12%;
+    --muted-foreground: 219 14% 65%;
+    --accent: 45 98% 56%;
+    --accent-foreground: 219 40% 6%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --input: 220 15% 22%;
-    --ring: 42 90% 52%;
+    --input: 219 30% 16%;
+    --ring: 217 91% 60%;
     --radius: 0.6rem;
   }
 }

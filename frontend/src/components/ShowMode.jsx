@@ -125,12 +125,12 @@ export function ShowMode({
             let color = "bg-muted border-2 border-border";
             if (isLive) {
               color = isMainAccent
-                ? "bg-primary shadow-[0_0_22px_hsl(var(--primary))]"
+                ? "bg-accent shadow-[0_0_22px_hsl(var(--accent))] border-accent"
                 : isMuted
                   ? "bg-muted border-2 border-primary/60"
                   : "bg-primary/80 shadow-[0_0_14px_hsl(var(--primary)/0.7)]";
             } else if (isMainAccent) {
-              color = "bg-primary/30 border-2 border-primary/60";
+              color = "bg-accent/25 border-2 border-accent/40 text-accent";
             } else if (isMuted) {
               color = "bg-transparent border-2 border-dashed border-border";
             }

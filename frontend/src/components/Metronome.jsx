@@ -135,12 +135,12 @@ export function Metronome({
               let color = "bg-muted border border-border";
               if (isLive && currentSub === 0) {
                 color = isMainAccent
-                  ? "bg-primary shadow-[0_0_10px_hsl(var(--primary))]"
+                  ? "bg-accent shadow-[0_0_10px_hsl(var(--accent))] border-accent"
                   : isMuted
                     ? "bg-muted border border-primary/50"
                     : "bg-primary/80 shadow-[0_0_6px_hsl(var(--primary)/0.6)]";
               } else if (isMainAccent) {
-                color = "bg-primary/30 border border-primary/60";
+                color = "bg-accent/25 border border-accent/40 text-accent";
               } else if (isMuted) {
                 color = "bg-transparent border border-dashed border-border";
               }
