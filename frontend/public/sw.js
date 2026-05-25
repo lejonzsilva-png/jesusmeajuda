@@ -1,5 +1,5 @@
 /* Setlist Metrônomo - simple offline-first service worker (cache-first for app shell) */
-const CACHE = "setlist-metronome-v2";
+const CACHE = "setlist-metronome-v3";
 const APP_SHELL = [
   "/",
   "/index.html",
