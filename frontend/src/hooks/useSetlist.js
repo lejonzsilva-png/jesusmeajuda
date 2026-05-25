@@ -95,6 +95,10 @@ export function useSetlist() {
     });
   }, []);
 
+  const loadSongs = useCallback((normalized) => {
+    setSongs(normalized.map(normalizeSong));
+  }, []);
+
   return {
     songs,
     setSongs,
@@ -105,5 +109,6 @@ export function useSetlist() {
     clearSetlist,
     exportSetlist,
     importSetlist,
+    loadSongs,
   };
 }

@@ -3,6 +3,7 @@ import { useSetlist } from "@/hooks/useSetlist";
 import { useWakeLock } from "@/hooks/useWakeLock";
 import { useMetronome } from "@/hooks/useMetronome";
 import { SetlistPanel } from "@/components/SetlistPanel";
+import { LouvorAppPanel } from "@/components/LouvorAppPanel";
 import { Metronome } from "@/components/Metronome";
 import { ShowMode } from "@/components/ShowMode";
 import { Button } from "@/components/ui/button";
@@ -13,7 +14,7 @@ export default function Home() {
   const {
     songs,
     addSong, updateSong, removeSong, reorderSongs, clearSetlist,
-    exportSetlist, importSetlist,
+    exportSetlist, importSetlist, loadSongs,
   } = useSetlist();
 
   const [browsingId, setBrowsingId] = useState(null);
@@ -293,7 +294,7 @@ export default function Home() {
       </header>
 
       <main className="flex-1 grid grid-cols-[340px_1fr] sm:grid-cols-[380px_1fr] lg:grid-cols-[420px_1fr] overflow-hidden min-h-0">
-        <div className="border-r border-border p-3 sm:p-4 flex flex-col overflow-hidden min-h-0">
+        <div className="border-r border-border p-3 sm:p-4 flex flex-col overflow-hidden min-h-0 gap-4">
           <SetlistPanel
             songs={songs}
             browsingId={browsingId}
@@ -308,6 +309,10 @@ export default function Home() {
             onExport={exportSetlist}
             onImport={importSetlist}
           />
+          {/* LouvorApp integration — import scales as setlist */}
+          <div className="shrink-0 border-t border-border pt-3">
+            <LouvorAppPanel onLoadSetlist={loadSongs} />
+          </div>
         </div>
 
         <div className="flex-1 flex flex-col items-center justify-start p-4 sm:p-6 gap-5 overflow-y-auto">
