@@ -89,7 +89,7 @@ export function Metronome({
       {/* LEFT column: BPM + play */}
       <div className="flex flex-col items-center gap-4">
         <div className="flex items-baseline gap-2">
-          <div className="text-8xl font-display font-bold text-primary tabular-nums leading-none drop-shadow-[0_0_20px_hsl(var(--primary)/0.45)]" data-testid="text-bpm">
+          <div className="text-8xl font-display font-bold text-accent tabular-nums leading-none drop-shadow-[0_0_20px_hsl(var(--accent)/0.45)]" data-testid="text-bpm">
             {bpm}
           </div>
           <div className="text-xs text-muted-foreground uppercase tracking-[0.3em]">BPM</div>
@@ -178,10 +178,10 @@ export function Metronome({
             )}
             <button
               onClick={onTogglePlay}
-              className={`w-28 h-28 rounded-full flex items-center justify-center font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+              className={`w-28 h-28 rounded-full flex items-center justify-center font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                 isPlaying
-                  ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                  : "bg-card border-2 border-primary text-primary hover:bg-primary/10"
+                  ? "bg-accent text-accent-foreground hover:bg-accent/90"
+                  : "bg-card border-2 border-accent text-accent hover:bg-accent/10"
               }`}
               data-testid="button-play-pause"
               aria-label={isPlaying ? "Pausar" : "Tocar"}

@@ -227,7 +227,7 @@ export function LouvorAppPanel({ onLoadSetlist }) {
           {/* Load button */}
           <Button
             size="sm"
-            className="w-full h-8 text-xs gap-1.5"
+            className="w-full h-8 text-xs gap-1.5 bg-white hover:bg-white/90 text-black border border-border shadow-sm font-semibold disabled:opacity-50 disabled:pointer-events-none"
             onClick={handleLoad}
             disabled={!selectedId || loading}
             data-testid="button-louvorapp-load"

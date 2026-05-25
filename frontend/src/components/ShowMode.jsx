@@ -103,7 +103,7 @@ export function ShowMode({
 
         {/* BPM + time sig */}
         <div className="flex items-end gap-5 sm:gap-8">
-          <div className="text-6xl sm:text-8xl md:text-9xl font-display font-bold text-primary tabular-nums leading-none drop-shadow-[0_0_24px_hsl(var(--primary)/0.5)]" data-testid="show-bpm">
+          <div className="text-6xl sm:text-8xl md:text-9xl font-display font-bold text-accent tabular-nums leading-none drop-shadow-[0_0_24px_hsl(var(--accent)/0.5)]" data-testid="show-bpm">
             {bpm}
           </div>
           <div className="flex flex-col items-start pb-1 sm:pb-2">
@@ -147,10 +147,10 @@ export function ShowMode({
         {/* Play / pause */}
         <button
           onClick={onTogglePlay}
-          className={`w-28 h-28 sm:w-36 sm:h-36 rounded-full flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+          className={`w-28 h-28 sm:w-36 sm:h-36 rounded-full flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
             isPlaying
-              ? "bg-primary text-primary-foreground hover:bg-primary/90"
-              : "bg-card border-4 border-primary text-primary hover:bg-primary/10"
+              ? "bg-accent text-accent-foreground hover:bg-accent/90"
+              : "bg-card border-4 border-accent text-accent hover:bg-accent/10"
           }`}
           data-testid="show-play-pause"
           aria-label={isPlaying ? "Pausar" : "Tocar"}
