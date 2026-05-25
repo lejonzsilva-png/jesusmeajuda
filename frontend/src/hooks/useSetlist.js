@@ -30,6 +30,7 @@ export function useSetlist() {
   // Setlist starts empty on every app open (no localStorage persistence).
   // Users can add songs manually or import a .setlist file.
   const [songs, setSongs] = useState([]);
+  const [setlistName, setSetlistName] = useState("");
 
   const addSong = useCallback((data) => {
     const newSong = normalizeSong({ ...data, id: Date.now().toString() + Math.random().toString(36).slice(2, 7) });
@@ -57,6 +58,7 @@ export function useSetlist() {
 
   const clearSetlist = useCallback(() => {
     setSongs([]);
+    setSetlistName("");
   }, []);
 
   const exportSetlist = useCallback((filename) => {
@@ -85,6 +87,9 @@ export function useSetlist() {
           if (!Array.isArray(imported)) throw new Error("invalid");
           const normalized = imported.map(normalizeSong);
           setSongs(normalized);
+          // Set name to file name without extension
+          const nameWithoutExt = file.name.replace(/\.setlist$/, "");
+          setSetlistName(nameWithoutExt);
           resolve(normalized.length);
         } catch (err) {
           reject(err);
@@ -95,12 +100,15 @@ export function useSetlist() {
     });
   }, []);
 
-  const loadSongs = useCallback((normalized) => {
+  const loadSongs = useCallback((normalized, name) => {
     setSongs(normalized.map(normalizeSong));
+    setSetlistName(name || "");
   }, []);
 
   return {
     songs,
+    setlistName,
+    setSetlistName,
     setSongs,
     addSong,
     updateSong,

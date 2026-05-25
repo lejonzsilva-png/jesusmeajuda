@@ -13,6 +13,7 @@ import { DEFAULT_TIME_SIGNATURE, defaultAccents, getSubdivisionById } from "@/ty
 export default function Home() {
   const {
     songs,
+    setlistName,
     addSong, updateSong, removeSong, reorderSongs, clearSetlist,
     exportSetlist, importSetlist, loadSongs,
   } = useSetlist();
@@ -303,6 +304,7 @@ export default function Home() {
           <div className="flex-1 min-h-0 overflow-hidden">
             <SetlistPanel
               songs={songs}
+              name={setlistName}
               browsingId={browsingId}
               playingId={playingId}
               isPlaying={isPlaying}

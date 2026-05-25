@@ -18,6 +18,7 @@ import { SongForm } from "@/components/SongForm";
 
 export function SetlistPanel({
   songs,
+  name,
   browsingId,
   playingId,
   isPlaying,
@@ -107,11 +108,18 @@ export function SetlistPanel({
   return (
     <div className="flex flex-col h-full gap-3" data-testid="setlist-panel">
       <div className="flex items-center justify-between gap-2 flex-wrap">
-        <h2 className="text-lg font-bold text-foreground flex items-center gap-2">
-          <Music className="w-5 h-5 text-primary" />
-          <span className="font-display tracking-wider uppercase">Setlist</span>
-          <Badge variant="secondary" className="text-xs">{songs.length}</Badge>
-        </h2>
+        <div className="flex flex-col gap-0.5 min-w-0">
+          <h2 className="text-lg font-bold text-foreground flex items-center gap-2">
+            <Music className="w-5 h-5 text-primary shrink-0" />
+            <span className="font-display tracking-wider uppercase truncate">Setlist</span>
+            <Badge variant="secondary" className="text-xs shrink-0">{songs.length}</Badge>
+          </h2>
+          {name && (
+            <p className="text-[10px] text-primary font-medium tracking-wider uppercase truncate pl-7" title={name} data-testid="setlist-name-subtitle">
+              {name}
+            </p>
+          )}
+        </div>
         <div className="flex gap-1">
           <Button
             size="sm"

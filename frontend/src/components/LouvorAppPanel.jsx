@@ -79,7 +79,7 @@ export function LouvorAppPanel({ onLoadSetlist }) {
     if (!scale) { toast.error("Seleciona uma escala primeiro."); return; }
     const songs = convertScaleToSongs(scale);
     if (songs.length === 0) { toast.error("Esta escala não tem músicas."); return; }
-    onLoadSetlist(songs);
+    onLoadSetlist(songs, scale.title);
     toast.success(`"${scale.title}" carregado — ${songs.length} música${songs.length !== 1 ? "s" : ""}!`);
     setSelectedId("");
   }
