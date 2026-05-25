@@ -21,7 +21,7 @@ function saveConfig(config) {
 }
 
 /**
- * Converts a LouvorApp song object into the jesusmeajuda internal format.
+ * Converts a Worship Manager song object into the jesusmeajuda internal format.
  */
 function convertSong(song) {
   const bpm = song.bpm && song.bpm >= 30 && song.bpm <= 300 ? song.bpm : 120;
@@ -104,7 +104,7 @@ export function useLouvorApp() {
   }, [config]);
 
   /**
-   * Converts a fetched LouvorApp scale's setlist into jesusmeajuda songs array.
+   * Converts a fetched Worship Manager scale's setlist into jesusmeajuda songs array.
    */
   const convertScaleToSongs = useCallback((scale) => {
     const setlist = scale.setlist ?? [];

@@ -59,7 +59,7 @@ export function LouvorAppPanel({ onLoadSetlist }) {
     updateConfig(urlInput, keyInput);
     setShowConfig(false);
     setHasFetched(false); // trigger auto-fetch on next render
-    toast.success("Ligado ao LouvorApp!");
+    toast.success("Ligado ao Worship Manager!");
   }
 
   function handleDisconnect() {
@@ -93,7 +93,7 @@ export function LouvorAppPanel({ onLoadSetlist }) {
       <div className="flex items-center gap-2">
         <PlugZap className={`w-3.5 h-3.5 shrink-0 ${isConfigured ? "text-primary" : "text-muted-foreground"}`} />
         <span className="flex-1 text-[11px] font-bold uppercase tracking-wider text-foreground/70">
-          LouvorApp
+          Worship Manager
         </span>
         {isConfigured && !showConfig && (
           <>
@@ -132,7 +132,7 @@ export function LouvorAppPanel({ onLoadSetlist }) {
       {showConfig && (
         <form onSubmit={handleSave} className="flex flex-col gap-2">
           <p className="text-[10px] text-muted-foreground leading-relaxed">
-            Cole o <strong>URL do servidor</strong> e a <strong>API Key</strong> do LouvorApp
+            Cole o <strong>URL do servidor</strong> e a <strong>API Key</strong> do Worship Manager
             (encontra em <em>Perfil → Integração/API</em>).
           </p>
           <Input
